@@ -4,14 +4,9 @@ import { Router, Link } from "@reach/router"
 
 import reportWebVitals from './reportWebVitals';
 
-// materials
-import { Grid } from '@mui/material';
-
 // project
 import './index.css';
-import Navigation from "./components/navigation";
 
-import App from './App';
 import Home from './views/home'
 import Dashboard from './views/dashboard';
 

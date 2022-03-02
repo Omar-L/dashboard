@@ -1,21 +1,18 @@
 import React from "react";
 
 // material
-import { Grid, Typography } from '@mui/material';
-
-// project
-import Navigation from "../../components/navigation";
+import { Button, Typography } from '@mui/material';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import { Box } from "@mui/system";
 
 function Home() {
     return (
-        <Grid>
-            <Grid item>
-                <Navigation />
-            </Grid>
-            <Grid item>
-                <h2>Home</h2>
-            </Grid>
-        </Grid>
+        <Box display="flex" justifyContent="center" alignItems="center" height="100vh" sx={{ flexDirection: 'column' }} padding="1rem">
+            <Typography variant="h1" align="center" sx={{paddingBottom: '2rem'}}>Welcome to the Dashboard</Typography>
+            <Button variant="contained" endIcon={<ArrowCircleRightIcon />} href="/dashboard">
+                Go to Dashboard
+            </Button>
+        </Box>
     )
 }
 
