@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { IconButton, capitalize, MenuItem } from "@mui/material";
+import { IconButton, MenuItem } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 
@@ -14,13 +14,13 @@ import Menu from '@mui/material/Menu';
 import { Link, useLocation } from "@reach/router";
 
 export default function Navigation() {
-    const location = useLocation();   
+    // const location = useLocation();   
 
     // if not '/' then set pageTitle as pathname
-    let pageTitle;
-    if(location.pathname !== '/') {
-        pageTitle = location.pathname.split('/').pop();
-    } else pageTitle = "Home"
+    // let pageTitle;
+    // if(location.pathname !== '/') {
+    //     pageTitle = location.pathname.split('/').pop();
+    // } else pageTitle = "Home"
 
     // nav menu controls
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -49,7 +49,7 @@ export default function Navigation() {
                 </IconButton>
                 
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1, textTransform: 'capitalize' }}>
-                    {pageTitle}                
+                    {/* {pageTitle}                 */}
                 </Typography>
                 <Button color="inherit">Login</Button>
             </Toolbar>

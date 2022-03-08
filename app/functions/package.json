@@ -19,5 +19,9 @@
   "devDependencies": {
     "firebase-functions-test": "^0.2.0"
   },
+  "browser": {
+    "crypto": false,
+    "stream": false
+  },  
   "private": true
 }

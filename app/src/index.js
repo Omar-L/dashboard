@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Link } from "@reach/router"
-
-import reportWebVitals from './reportWebVitals';
+import { Router } from "@reach/router"
 
 // project
-import './index.css';
+import './assets/index.css';
 
 import Home from './views/home'
 import Dashboard from './views/dashboard';
-
+import Navigation from './components/navigation';
 
 ReactDOM.render(
-
   <React.StrictMode>
+    <Navigation />
+
     <Router>
       <Home path="/" />
       <Dashboard path="dashboard" />
@@ -22,8 +21,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
