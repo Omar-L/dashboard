@@ -18,7 +18,6 @@ function CountryFacts({selectedCountry, population, setPopulation}) {
     // When country selected, get population
     useEffect(() => {
         console.log("Getting a list of populations of a country from the World Bank");
-        // console.log("The selected country is: ", selectedCountry.name)
         getPopulation(selectedCountry);
     }, [selectedCountry])
 
@@ -26,7 +25,7 @@ function CountryFacts({selectedCountry, population, setPopulation}) {
     // Population of a Country
     const getPopulation = async (selectedCountry) => {
         try {
-            axios.get(`https://api.worldbank.org/v2/country/${selectedCountry.id.toString()}/indicator/SP.POP.TOTL?format=json`)
+            axios.get(`https://api.worldbank.org/v2/country/${selectedCountry.id}/indicator/SP.POP.TOTL?format=json`)
                 // .then((response) => {setPopulation(response.data[1]); console.log(response.data[1])})
                 .then((response) => (setPopulation(response.data[1])))
         }
