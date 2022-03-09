@@ -6,13 +6,14 @@ const axios = require('axios');
 
 function SearchCountries({setSelectedCountry}) {
     const [countries, setCountries] = useState([]);
-
-    // get list of countries from World Bank
+    
+    // On page load, get list of countries from World Bank
     useEffect(() => {
         console.log("Getting list of countries and regions from the World Bank");
         getCountries();
     }, [])
 
+    // Create a list of Countries
     const getCountries = async () => {
         try {
             axios.get('https://api.worldbank.org/v2/country/all?per_page=299&format=json')
@@ -21,13 +22,16 @@ function SearchCountries({setSelectedCountry}) {
         catch (e) {console.log(e)}        
     }
 
+    // filter countries where the region is 'aggregate' thus not a country
+    const filteredCountries = countries.filter((country) => country.region.value !== 'Aggregates')
+
     return (
         <Autocomplete 
             fullWidth
-            options={countries}
+            options={filteredCountries}
             getOptionLabel={(option) => option.name}
-            renderInput={(countries) => <TextField {...countries} label="Countries and Regions" />}
-            onChange={(event, value) => (setSelectedCountry(value))}
+            renderInput={(filteredCountries) => <TextField {...filteredCountries} label="Countries" />}
+            onChange={(event, value) => setSelectedCountry(value)}
         />
     );
 };

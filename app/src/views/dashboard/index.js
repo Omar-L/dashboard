@@ -1,37 +1,63 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // material
-import { Grid, Typography } from '@mui/material';
+import { Button, Card,CardActionArea,CardActions,CardContent,Grid, Typography } from '@mui/material';
 
 // project
 import SearchCountries from "../../components/searchCountries";
-
-// axios
-const axios = require('axios');
-
+import MapChart from "../../components/map/MapChart";
+import CountryFacts from "../../components/countryFacts";
 
 function Dashboard() {
-    const [selectedCountry, setSelectedCountry] = useState({});
-
-    const connectTo = async () => {
-        try {
-            axios.get('http://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2000&format=json')
-            .then((response) => console.log(response.data))
-        }
-        catch (e) {console.log(e)}
-        
-    }
-    
+    const [selectedCountry, setSelectedCountry] = useState('');
+    const [population, setPopulation] = useState('');
     
     return (
         <Grid container spacing={3} padding={3}>
             <Grid item xs={12}>
-                <SearchCountries setSelectedCountry={setSelectedCountry} />  
+                <Typography variant="h1">World Dashboard</Typography>
+                <Typography variant="body1">Welcome to the World Dashboard. Select a country from the list below to learn about it.</Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <SearchCountries selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} />  
             </Grid>
             {selectedCountry && (
-            <Grid item>
-                <Typography variant="h1">{selectedCountry.name} {selectedCountry.id}</Typography>
-            </Grid>            
+            <React.Fragment>
+                <Grid item xs={12}>
+                    <Typography variant="h2">{selectedCountry.name}</Typography>
+                    <Typography variant="h3">{selectedCountry.region.value} Region</Typography>
+                </Grid>
+
+                <Grid item xs={12} md={8}>
+                    <CountryFacts selectedCountry={selectedCountry} population={population} setPopulation={setPopulation} />
+                </Grid>
+                
+                <Grid item xs={12} md={4}>
+                    <Card variant={"outlined"}>
+                        <CardContent>
+                            <Grid container>
+                                <Grid item xs={12} zeroMinWidth>
+                                    <MapChart selectedCountry={selectedCountry} />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Typography variant="caption">{selectedCountry.capitalCity}, {selectedCountry.name} on the world map.</Typography>
+                                </Grid>
+                            </Grid>
+                        </CardContent>
+                        <CardActionArea>
+                            <CardActions>
+                                <Button size="small" color="primary" variant="contained" 
+                                        href={`https://google.com/maps/@${selectedCountry.latitude},${selectedCountry.longitude},10z`}
+                                        target="_blank"        
+                                >
+                                    Open on Google Maps
+                                </Button>
+                            </CardActions>
+                        </CardActionArea>
+                    </Card>
+                    
+                </Grid>
+            </React.Fragment>
             )}
         </Grid>
     )

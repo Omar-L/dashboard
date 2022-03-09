@@ -11,17 +11,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 
 // reach router
-import { Link, useLocation } from "@reach/router";
+import { Link } from "@reach/router";
 
 export default function Navigation() {
-    // const location = useLocation();   
-
-    // if not '/' then set pageTitle as pathname
-    // let pageTitle;
-    // if(location.pathname !== '/') {
-    //     pageTitle = location.pathname.split('/').pop();
-    // } else pageTitle = "Home"
-
     // nav menu controls
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
