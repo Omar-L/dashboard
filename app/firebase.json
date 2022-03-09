@@ -18,8 +18,7 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ],
-    "entryPoint": "./app"
+    ]
   },
   "storage": {
     "rules": "storage.rules"
