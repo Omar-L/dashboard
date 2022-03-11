@@ -34,34 +34,35 @@ function CountryFacts({selectedCountry, population, setPopulation}) {
 
     return (
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            <ListItem>
-            <ListItemAvatar>
-                <Avatar>
-                <StarIcon />
-                </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={selectedCountry.capitalCity} secondary="Capital City" />
-            </ListItem>
-            <ListItem>
-            <ListItemAvatar>
-                <Avatar>
-                <WorkIcon />
-                </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={selectedCountry.incomeLevel.value} secondary="Income Level" />
-            </ListItem>
-            <ListItem>
-            <ListItemAvatar>
-                <Avatar>
-                <PeopleIcon />
-                </Avatar>
-            </ListItemAvatar>
+                <ListItem>
+                <ListItemAvatar>
+                    <Avatar>
+                        <StarIcon />
+                    </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={selectedCountry.capitalCity} secondary="Capital City" />
+                </ListItem>
 
-            {population && 
-                <ListItemText primary={population[0].value} secondary={`Population as of ${population[0].date}`} />
-            }
+                <ListItem>
+                <ListItemAvatar>
+                    <Avatar>
+                        <WorkIcon />
+                    </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={selectedCountry.incomeLevel.value} secondary="Income Level" />
+                </ListItem>
 
-            </ListItem>
+                <ListItem>
+                <ListItemAvatar>
+                    <Avatar>
+                    <PeopleIcon />
+                    </Avatar>
+                </ListItemAvatar>
+
+                {population && (
+                <ListItemText primary={population[0].value} secondary={`Population as of ${population[0].date}`} />)
+                }
+                </ListItem>
         </List>
     );
 }

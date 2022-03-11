@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 
 // reach router
-import { Link } from "@reach/router";
+import { Link } from 'react-router-dom'
 
 export default function Navigation() {
     // nav menu controls

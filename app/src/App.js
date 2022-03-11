@@ -1,24 +1,25 @@
-import logo from './assets/logo.svg';
-import './assets/App.css';
+import { ThemeProvider } from "@mui/material";
+import { CssBaseline } from '@mui/material';
+import { BrowserRouter } from "react-router-dom";
+import Navigation from "./components/navigation/navbar";
+import Routes from './routes'
+// import theme from 'theme';
 
-function App() {
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+
+
+
+const App = () => {
+  let theme = createTheme();
+  theme = responsiveFontSizes(theme);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline/>
+        <Navigation />
+        <Routes />
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
