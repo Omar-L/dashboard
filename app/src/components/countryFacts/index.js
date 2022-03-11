@@ -17,8 +17,10 @@ function CountryFacts({selectedCountry, population, setPopulation}) {
 
     // When country selected, get population
     useEffect(() => {
-        console.log("Getting a list of populations of a country from the World Bank");
-        getPopulation(selectedCountry);
+        if (selectedCountry !== '') {
+            console.log(`Getting a list of populations for ${selectedCountry.name} from the World Bank`);
+            getPopulation(selectedCountry);
+    }
     }, [selectedCountry])
 
     
@@ -26,10 +28,9 @@ function CountryFacts({selectedCountry, population, setPopulation}) {
     const getPopulation = async (selectedCountry) => {
         try {
             axios.get(`https://api.worldbank.org/v2/country/${selectedCountry.id}/indicator/SP.POP.TOTL?format=json`)
-                // .then((response) => {setPopulation(response.data[1]); console.log(response.data[1])})
                 .then((response) => (setPopulation(response.data[1])))
         }
-        catch (e) {console.log(e)}        
+        catch (e) {console.log(e)}     
     }
 
     return (
@@ -43,8 +44,8 @@ function CountryFacts({selectedCountry, population, setPopulation}) {
                     <ListItemText primary={selectedCountry.capitalCity} secondary="Capital City" />
                 </ListItem>
 
-                <ListItem>
-                <ListItemAvatar>
+                <ListItem >
+                <ListItemAvatar >
                     <Avatar>
                         <WorkIcon />
                     </Avatar>
@@ -60,7 +61,7 @@ function CountryFacts({selectedCountry, population, setPopulation}) {
                 </ListItemAvatar>
 
                 {population && (
-                <ListItemText primary={population[0].value} secondary={`Population as of ${population[0].date}`} />)
+                <ListItemText primary={population[0].value.toLocaleString(undefined, { maximumFractionDigits: 2 })} secondary={`Population as of ${population[0].date}`} />)
                 }
                 </ListItem>
         </List>
