@@ -60,8 +60,7 @@ function Dashboard() {
                             <CardActions>
                                 <Button size="small" color="primary" variant="contained" 
                                         href={`https://google.com/maps/@${selectedCountry.latitude},${selectedCountry.longitude},10z`}
-                                        target="_blank"        
-                                        color="secondary"
+                                        target="_blank"
                                 >
                                     Open on Google Maps
                                 </Button>
