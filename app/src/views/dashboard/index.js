@@ -22,7 +22,7 @@ function Dashboard() {
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Typography variant="h1">World Dashboard</Typography>
-                        <Typography variant="body1">Welcome to the World Dashboard. Select a country from the list below to learn about it.</Typography>
+                        <Typography variant="body1">Welcome to the World Dashboard. Select, or search, for a country from the list below to learn about it.</Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <SearchCountries selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} />  
