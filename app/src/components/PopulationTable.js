@@ -17,7 +17,7 @@ import TablePagination from '@mui/material/TablePagination';
 
 const PopulationTable = ({population}) => {
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);

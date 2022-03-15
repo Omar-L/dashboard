@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 
 // material
-import { Button, Card,CardActionArea,CardActions,CardContent,Grid, Typography } from '@mui/material';
+import { Button, Card, CardActionArea,CardActions,CardContent,Grid, Typography } from '@mui/material';
 
 // project
 import SearchCountries from "../../components/searchCountries";
 import MapChart from "../../components/map/MapChart";
 import CountryFacts from "../../components/countryFacts";
-
-
-
-
 import PopulationChart from "../../components/PopulationChart";
 import PopulationTable from "../../components/PopulationTable";
 
@@ -69,21 +65,27 @@ function Dashboard() {
                         </Grid>
                         
                         {population && (
-                        <>
-                        
-                        <Grid item xs={12}>
-                            <Grid mb={2}>
-                                <Typography variant="h5">Population of {selectedCountry.name}</Typography>
-                                <Typography variant="subtitle" color="secondary">Since {population[49].date}</Typography>
+                        <Grid container spacing={3} padding={3}>
+                            <Grid item xs={12} >
+                                <Typography variant="h4">Charts and Graphs for {selectedCountry.name}</Typography>
                             </Grid>
+                            <Grid item xs={12} md={6}>
+                                <Grid mb={2}>
+                                    <Typography variant="h5">Population Line Graph</Typography>
+                                    <Typography variant="subtitle" color="secondary">{selectedCountry.name} Since {population[49].date}</Typography>
+                                </Grid>
 
-                        <PopulationChart population={population} />
+                            <PopulationChart population={population} />
 
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+                                <Grid mb={2}>
+                                    <Typography variant="h5">Population Table</Typography>
+                                    <Typography variant="subtitle" color="secondary">{selectedCountry.name}</Typography>
+                                </Grid>
+                                <PopulationTable population={population} />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <PopulationTable population={population} />
-                        </Grid>
-                        </>
                         )}
                         
                     </React.Fragment>
