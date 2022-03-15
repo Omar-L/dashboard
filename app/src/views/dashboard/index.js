@@ -8,8 +8,7 @@ import SearchCountries from "../../components/searchCountries";
 import MapChart from "../../components/map/MapChart";
 import CountryFacts from "../../components/countryFacts";
 
-// charts
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -19,6 +18,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { formatNumber } from "../../utils/formatNumber";
+import PopulationChart from "../../components/PopulationChart";
 
 function Dashboard() {
     const [selectedCountry, setSelectedCountry] = useState('');
@@ -83,32 +83,15 @@ function Dashboard() {
                 
                 {population && (
                 <>
+                
                 <Grid item xs={12}>
                     <Grid mb={2}>
                         <Typography variant="h5">Population of {selectedCountry.name}</Typography>
                         <Typography variant="subtitle" color="secondary">Since {population[49].date}</Typography>
                     </Grid>
-                    
-                    <ResponsiveContainer width="100%" height="85%">
-                        <LineChart
-                            width={500}
-                            height={300}
-                            data={population}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                        >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="date" reversed />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend />
-                        <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
-                        </LineChart>
-                    </ResponsiveContainer>
+
+                <PopulationChart population={population} />
+
                 </Grid>
                 <Grid item xs={12}>
                 <TableContainer component={Paper}>
