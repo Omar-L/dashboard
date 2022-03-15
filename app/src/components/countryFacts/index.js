@@ -19,19 +19,14 @@ function CountryFacts({selectedCountry, population, setPopulation}) {
     useEffect(() => {
         if (selectedCountry !== '') {
             console.log(`Getting a list of populations for ${selectedCountry.name} from the World Bank`);
-            getPopulation(selectedCountry);
+            try {
+                // Population of a Country
+                axios.get(`https://api.worldbank.org/v2/country/${selectedCountry.id}/indicator/SP.POP.TOTL?format=json`)
+                    .then((response) => (setPopulation(response.data[1])))
+            }
+            catch (e) {console.log(e)}  
     }
-    }, [selectedCountry])
-
-    
-    // Population of a Country
-    const getPopulation = async (selectedCountry) => {
-        try {
-            axios.get(`https://api.worldbank.org/v2/country/${selectedCountry.id}/indicator/SP.POP.TOTL?format=json`)
-                .then((response) => (setPopulation(response.data[1])))
-        }
-        catch (e) {console.log(e)}     
-    }
+    }, [selectedCountry, setPopulation])
 
     return (
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
